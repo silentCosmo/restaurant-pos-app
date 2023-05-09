@@ -39,7 +39,7 @@ function Menu() {
 
     const [selectedCategory, setSelectedCategory] = useState("Beverages");
 
-
+    
   return (
     <div className='py-16 px-5'>
           <div className="flex">
@@ -61,7 +61,7 @@ function Menu() {
               <div className="w-2/3 flex flex-wrap gap-1 md:gap-3 p-2 text-center items-center justify-center">
                   {/* Map over the selected category's items and render them as clickable buttons */}
                   {menuItems[selectedCategory].map((item) => (
-                    <MenuItem item={item} />
+                    <MenuItem key={item.id} item={item} category={selectedCategory}/>
                   ))}
               </div>
           </div>

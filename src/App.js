@@ -4,6 +4,9 @@ import Home from './pages/Home';
 import PageIsLoading from './components/PageIsLoading';
 import Header from './components/Header';
 import Menu from './components/waiterside/Menu';
+import Crud from './pages/Crud';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 function App() {
   const Layout = ()=>{
@@ -24,9 +27,13 @@ function App() {
           element:<Home/>
         },
         {
-      path:'/table/:tableNumber',
-      element:<Menu/>
-    }
+          path:'/table/:tableNumber',
+          element:<Menu/>
+        },
+        {
+          path:'/crud',
+          element:<Crud/>
+        }
       ]
     },
     {
@@ -36,10 +43,12 @@ function App() {
     
   ])
   return (
-    <RouterProvider 
-    router={router}
-    fallbackElement={<PageIsLoading/>}
-    />
+    <Provider store={store}>
+      <RouterProvider 
+      router={router}
+      fallbackElement={<PageIsLoading/>}
+      />
+    </Provider>
   );
 }
 
